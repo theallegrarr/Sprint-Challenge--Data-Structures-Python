@@ -60,13 +60,16 @@ class ArrayRingBuffer:
         self.storage = [None] * capacity
         self.current_index = 0
     def append(self, item):
-        #add item to current index
+        # populate the current index with passed in item
         self.storage[self.current_index] = item
-        #increment index
+        # increment index after insertion
         self.current_index += 1
-        #if index is at capacity, move it back to the beginning
+        # if index is at capacity, move to the beginning
         if self.current_index == self.capacity:
             self.current_index = 0
     def get(self):
-        #remove all empty elements with list comprehension and return list
+        # filter all empty elements with list comprehension and return list
         return [i for i in self.storage if i]
+
+# Advantage here is that it is much easier to implement
+# Disadvantage would be the iterations that happen when i populate the empty list and the comprehension
