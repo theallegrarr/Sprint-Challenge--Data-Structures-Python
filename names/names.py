@@ -41,4 +41,4 @@ print (f"runtime: {end_time - start_time} seconds")
 start_time_stretch = time.time()
 duplicates = [name for name in names_1 if names_2.count(name)>=1]
 end_time_stretch = time.time()
-print (f"{len(duplicates)} duplicates | runtime for array stretch: {end_time_stretch - start_time_stretch} seconds")
+print (f"{len(duplicates)} duplicates: {end_time_stretch - start_time_stretch} seconds")
