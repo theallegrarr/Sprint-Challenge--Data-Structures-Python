@@ -38,6 +38,6 @@ print (f"runtime: {end_time - start_time} seconds")
 # What's the best time you can accomplish?  Thare are no restrictions on techniques or data
 # structures, but you may not import any additional libraries that you did not write yourself.
 start_time_stretch = time.time()
-duplicates = [name for name in names_1 if names_2.count(name)>=1]
+duplicates = set(names_1) & set(names_2)
 end_time_stretch = time.time()
 print (f"{len(duplicates)} duplicates: {end_time_stretch - start_time_stretch} seconds")
