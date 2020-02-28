@@ -12,10 +12,10 @@ class RingBuffer:
             self.storage.add_to_tail(item)
             self.current = self.storage.head
         else:
-            drop_head = self.storage.head
+            old_head = self.storage.head
             self.storage.remove_from_head()
             self.storage.add_to_tail(item)
-            if drop_head == self.current:
+            if old_head == self.current:
                 self.current = self.storage.tail
 
     def get(self):
@@ -23,13 +23,16 @@ class RingBuffer:
         list_buffer_contents = []
 
         # TODO: Your code here
+        # Note:  This is the only [] allowed
+        list_buffer_contents = []
+
+        # TODO: Your code here
         count = self.storage.length
-        while count > 0:
-            value = self.storage.remove_from_head()
-            list_buffer_contents.append(value)
-            self.storage.add_to_tail(value)
-            count -= 1
-        
+        while len(list_buffer_contents) < self.storage.length:
+            list_buffer_contents.append(self.current.value)
+            if self.current.next: self.current = self.current.next
+            else: self.current = self.storage.head
+
         return list_buffer_contents
 
 buffer = RingBuffer(3)
